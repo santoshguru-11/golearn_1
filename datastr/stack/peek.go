@@ -1,7 +1,6 @@
 /*
-1. Simple Stack Using a Slice
-In this example, a stack is implemented using a slice of integers:
-
+4. Stack with Peek Function
+This example implements a stack with a peek function that allows you to view the top element without popping it:
 */
 
 package main
@@ -30,6 +29,15 @@ func (s *Stack) Pop() int {
 	return value
 }
 
+// Peek at the top element without popping it
+func (s *Stack) Peek() int {
+	if len(s.elements) == 0 {
+		return -1 // Return -1 if stack is empty
+	}
+	lastIndex := len(s.elements) - 1
+	return s.elements[lastIndex]
+}
+
 func main() {
 	stack := &Stack{}
 
@@ -37,7 +45,6 @@ func main() {
 	stack.Push(20)
 	stack.Push(30)
 
+	fmt.Println("Peek:", stack.Peek())  // Output: Peek: 30
 	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 30
-	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 20
-	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 10
 }

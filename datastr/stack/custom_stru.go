@@ -1,3 +1,9 @@
+/*
+2. Stack of Custom Structs
+In this example, a stack is implemented using a slice of custom structs:
+
+*/
+
 package main
 
 import (

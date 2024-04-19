@@ -1,32 +1,36 @@
 /*
-1. Simple Stack Using a Slice
-In this example, a stack is implemented using a slice of integers:
-
+5. Stack Using a Linked List
+In this example, a stack is implemented using a linked list:
 */
-
 package main
 
 import (
 	"fmt"
 )
 
+type Node struct {
+	value int
+	next  *Node
+}
+
 type Stack struct {
-	elements []int
+	top *Node
 }
 
 // Push an element onto the stack
 func (s *Stack) Push(value int) {
-	s.elements = append(s.elements, value)
+	newNode := &Node{value: value}
+	newNode.next = s.top
+	s.top = newNode
 }
 
 // Pop an element from the stack
 func (s *Stack) Pop() int {
-	if len(s.elements) == 0 {
+	if s.top == nil {
 		return -1 // Return -1 if stack is empty
 	}
-	lastIndex := len(s.elements) - 1
-	value := s.elements[lastIndex]
-	s.elements = s.elements[:lastIndex]
+	value := s.top.value
+	s.top = s.top.next
 	return value
 }
 
@@ -39,5 +43,4 @@ func main() {
 
 	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 30
 	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 20
-	fmt.Println("Popped:", stack.Pop()) // Output: Popped: 10
 }
