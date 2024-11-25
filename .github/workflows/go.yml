@@ -24,7 +24,4 @@ jobs:
     - name: List repository files
       run: ls -R
 
-    # Step 4: Run the Go file
-    - name: Run Go file
-      run: go run ./golearn_1/basics/add.go
 
